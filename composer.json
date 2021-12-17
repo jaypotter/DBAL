@@ -1,0 +1,19 @@
+{
+    "name": "potter/dbal",
+    "description": "PHP 8 Database Abstraction Layer",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jay Potter",
+            "email": "jay@jaypotter.ca"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Potter\\": "Potter/"}
+    },
+    "require": {
+        "php": "^8.0"
+    }
+}

@@ -2,8 +2,6 @@
 
 namespace Potter\DBAL\Server;
 
-require_once __DIR__ . '/../Database/DatabaseInterface.php';
-
 use Potter\DBAL\Database\DatabaseInterface;
 
 interface DatabaseServerInterface

@@ -8,7 +8,5 @@ interface DatabaseServerInterface
 {
     public function connect(): void;
 
-    public function disconnect(): void;
-
     public function getDatabase(string $database): DatabaseInterface;
 }

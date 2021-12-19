@@ -2,9 +2,9 @@
 
 namespace Potter\DBAL\MySQL\Connection;
 
-use Potter\DBAL\PDO\Connection\AbstractPDOConnection;
+use Potter\DBAL\PDO\Connection\Remote\AbstractRemotePDOConnection;
 
-final class MySQLConnection extends AbstractPDOConnection implements MySQLConnectionInterface
+final class MySQLConnection extends AbstractRemotePDOConnection implements MySQLConnectionInterface
 {
     use MySQLConnectionTrait;
 }

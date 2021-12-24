@@ -2,15 +2,10 @@
 
 namespace Potter\DBAL\MySQL\Connection;
 
-use Potter\DBAL\{
-    PDO\Connection\Remote\AbstractRemotePDOConnection,
-    Statement\StatementInterface
-};
+use Potter\DBAL\Statement\StatementInterface;
 
-final class MySQLConnection extends AbstractRemotePDOConnection implements MySQLConnectionInterface
+final class MySQLConnection extends AbstractMySQLConnection implements MySQLConnectionInterface
 {
-    private const PREFIX = 'mysqli';
-
     public function __construct(string $user, string $password, string $server = 'localhost', int $port = MySQLConnectionInterface::DEFAULT_PORT)
     {
         $this->setUser($user);
@@ -21,12 +16,7 @@ final class MySQLConnection extends AbstractRemotePDOConnection implements MySQL
         $this->connect();   
     }
 
-    public function getPrefix(): string
-    {
-        return self::PREFIX;
-    }
-
-    final public function showDatabases(string $like = ''): array
+    public function showDatabases(string $like = ''): array
     {
         $query = "SHOW DATABASES";
         if (strlen($like) === 0) {

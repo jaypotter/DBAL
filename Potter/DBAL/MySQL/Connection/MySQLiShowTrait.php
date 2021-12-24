@@ -25,7 +25,7 @@ trait MySQLiShowTrait
 
     private function validateShowDatabasesLike(string $like): void
     {
-        foreach([' ', '"', "'", ";"] as $char) {
+        foreach ([' ', '"', "'", ";"] as $char) {
             if (strpos($like, $char) !== false) {
                 throw new \Exception;
             }

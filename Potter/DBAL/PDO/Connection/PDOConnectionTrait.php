@@ -36,6 +36,11 @@ trait PDOConnectionTrait
         return 'pdo';
     }
 
+    final public function send(string $bytes): mixed
+    {
+        return $this->handle->query($bytes);
+    }
+
     final public function setDsn(string $dsn): void
     {
         $this->dsn = $dsn;

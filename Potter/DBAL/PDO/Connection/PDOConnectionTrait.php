@@ -28,7 +28,7 @@ trait PDOConnectionTrait
 
     final public function getHandle(): PDO
     {
-        return $this->pdo;
+        return $this->handle;
     }
 
     public function getPrefix(): string

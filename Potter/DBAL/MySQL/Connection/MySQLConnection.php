@@ -7,4 +7,13 @@ use Potter\DBAL\PDO\Connection\Remote\AbstractRemotePDOConnection;
 final class MySQLConnection extends AbstractRemotePDOConnection implements MySQLConnectionInterface
 {
     use MySQLConnectionTrait;
+
+    final public function __construct(string $user, string $password, string $server = 'localhost', int $port = MySQLConnectionInterface::DEFAULT_PORT)
+    {
+        $this->setUser($user);
+        $this->setPass($password);
+        $this->setHost($server);
+        $this->setDsn('mysql:host=' . $server);
+        $this->connect();   
+    }
 }

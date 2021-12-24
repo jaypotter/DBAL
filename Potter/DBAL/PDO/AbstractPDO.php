@@ -8,6 +8,6 @@ abstract class AbstractPDO extends AbstractDatabase implements PDOInterface
 {
     public function getDriver(): string
     {
-
+        return '';
     }
 }

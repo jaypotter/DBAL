@@ -46,7 +46,7 @@ trait PDOConnectionTrait
 
     final public function prepare(string $statement): StatementInterface
     {
-        return new PDOStatement($this, $statement);
+        return new PDOStatement(/** @scrutinizer ignore-type */ $this, $statement);
     }
 
     final public function send(string $bytes): mixed

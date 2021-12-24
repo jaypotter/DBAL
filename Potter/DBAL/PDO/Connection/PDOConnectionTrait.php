@@ -31,6 +31,11 @@ trait PDOConnectionTrait
         return $this->pdo;
     }
 
+    public function getPrefix(): string
+    {
+        return 'pdo';
+    }
+
     final public function setDsn(string $dsn): void
     {
         $this->dsn = $dsn;

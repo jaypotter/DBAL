@@ -4,7 +4,11 @@ namespace Potter\DBAL\MySQL\Connection;
 
 use \MySQLi;
 
-use Potter\DBAL\Server\Remote\AbstractRemoteDatabaseServer;
+use Potter\DBAL\{
+    MySQL\MySQLiStatement,
+    Server\Remote\AbstractRemoteDatabaseServer,
+    Statement\StatementInterface
+};
 
 final class MySQLiConnection extends AbstractRemoteDatabaseServer implements MySQLConnectionInterface
 {
@@ -36,5 +40,10 @@ final class MySQLiConnection extends AbstractRemoteDatabaseServer implements MyS
     public function getPrefix(): string
     {
         return self::PREFIX;
+    }
+
+    public function prepare(string $statement): StatementInterface
+    {
+        return new MySQLiStatement($this, $statement);
     }
 }

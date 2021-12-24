@@ -3,6 +3,10 @@
 namespace Potter\DBAL\PDO\Connection;
 
 use \PDO;
+use Potter\DBAL\{
+    PDO\PDOStatement,
+    Statement\StatementInterface
+};
 
 trait PDOConnectionTrait
 {
@@ -34,6 +38,11 @@ trait PDOConnectionTrait
     public function getPrefix(): string
     {
         return 'pdo';
+    }
+
+    final public function prepare(string $statement): StatementInterface
+    {
+        return new PDOStatement($this, $statement);
     }
 
     final public function send(string $bytes): mixed

@@ -15,7 +15,8 @@ final class MySQLConnection extends AbstractRemotePDOConnection implements MySQL
         $this->setUser($user);
         $this->setPass($password);
         $this->setHost($server);
-        $this->setDsn('mysql:host=' . $server);
+        $this->setPort($port);
+        $this->setDsn("mysql:host=$server;port=$port");
         $this->connect();   
     }
 

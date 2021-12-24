@@ -28,7 +28,8 @@ final class MySQLiConnection extends AbstractRemoteDatabaseServer implements MyS
         $this->handle = new MySQLi(
             hostname: $this->getHost(),
             username: $this->getUser(),
-            password: $this->getPass()
+            password: $this->getPass(),
+            port: $this->getPort()
         );
     }
 

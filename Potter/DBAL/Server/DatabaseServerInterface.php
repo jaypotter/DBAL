@@ -2,13 +2,15 @@
 
 namespace Potter\DBAL\Server;
 
-use Potter\DBAL\Database\DatabaseInterface;
+use Potter\Connection\ConnectionInterface;
+use Potter\DBAL\{
+    Database\DatabaseInterface,
+    Statement\StatementInterface
+};
 
-interface DatabaseServerInterface
+interface DatabaseServerInterface extends ConnectionInterface
 {
-    public function connect(): void;
+    //public function getDatabase(string $database): DatabaseInterface;
 
-    public function disconnect(): void;
-
-    public function getDatabase(string $database): DatabaseInterface;
+    public function prepare(string $statement): StatementInterface;
 }

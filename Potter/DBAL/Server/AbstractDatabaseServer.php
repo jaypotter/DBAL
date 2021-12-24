@@ -2,17 +2,22 @@
 
 namespace Potter\DBAL\Server;
 
-use Potter\DBAL\Database\DatabaseInterface;
+use Potter\Connection\AbstractConnection;
+use Potter\DBAL\{
+    Database\DatabaseInterface,
+    Statement\StatementInterface
+};
 
-abstract class AbstractDatabaseServer implements DatabaseServerInterface
+abstract class AbstractDatabaseServer extends AbstractConnection implements DatabaseServerInterface
 {
-    public function __destruct()
+    private const PREFIX = 'db';
+
+    //abstract public function getDatabase(string $database): DatabaseInterface;
+
+    public function getPrefix(): string
     {
-        $this->disconnect();
+        return self::PREFIX;
     }
-    abstract public function connect(): void;
 
-    abstract public function disconnect(): void;
-
-    abstract public function getDatabase(string $database): DatabaseInterface;
+    abstract public function prepare(string $statement): StatementInterface;
 }

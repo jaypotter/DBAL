@@ -29,7 +29,6 @@ final class MySQLiStatement extends AbstractStatement
 
     public function execute(): void
     {
-        echo $this->getParamTypes();
         if (empty($this->params)) {
             $this->statement->execute();
             return;

@@ -2,9 +2,12 @@
 
 namespace Potter\DBAL\PDO\Connection\Local;
 
-use Potter\DBAL\PDO\Connection\AbstractPDOConnection;
+use Potter\{
+    Connection\Local\AbstractLocalConnection,
+    DBAL\PDO\Connection\PDOConnectionTrait
+};
 
-abstract class AbstractLocalPDOConnection extends AbstractPDOConnection implements LocalPDOConnectionInterface
+abstract class AbstractLocalPDOConnection extends AbstractLocalConnection implements LocalPDOConnectionInterface
 {
-
+    use PDOConnectionTrait;
 }

@@ -12,7 +12,7 @@ use Potter\DBAL\{
 
 final class MySQLiConnection extends AbstractRemoteDatabaseServer implements MySQLConnectionInterface
 {
-    use MySQLConnectionTrait, MySQLiHandleTrait;
+    use MySQLiHandleTrait, MySQLiShowTrait;
 
     private const PREFIX = 'mysqli';
 

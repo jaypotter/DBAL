@@ -9,8 +9,6 @@ use Potter\DBAL\{
 
 final class MySQLConnection extends AbstractRemotePDOConnection implements MySQLConnectionInterface
 {
-    use MySQLConnectionTrait;
-
     private const PREFIX = 'mysqli';
 
     public function __construct(string $user, string $password, string $server = 'localhost', int $port = MySQLConnectionInterface::DEFAULT_PORT)

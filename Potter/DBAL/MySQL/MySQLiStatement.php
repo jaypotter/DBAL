@@ -22,4 +22,9 @@ final class MySQLiStatement extends AbstractStatement
     {
         $this->statement->execute();
     }
+
+    public function fetch(): array
+    {
+        return $this->statement->get_result()->fetch_all();
+    }
 }

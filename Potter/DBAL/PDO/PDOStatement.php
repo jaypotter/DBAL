@@ -22,4 +22,9 @@ final class PDOStatement extends AbstractStatement
     {
         $this->statement->execute();
     }
+
+    public function fetch(): array
+    {
+        return $this->statement->fetchAll();
+    }
 }

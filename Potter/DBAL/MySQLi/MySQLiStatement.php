@@ -4,7 +4,10 @@ namespace Potter\DBAL\MySQLi;
 
 use \mysqli_stmt;
 
-use Potter\DBAL\Statement\AbstractStatement;
+use Potter\DBAL\{
+    MySQLi\Connection\MySQLiConnection,
+    Statement\AbstractStatement
+};
 
 final class MySQLiStatement extends AbstractStatement
 {

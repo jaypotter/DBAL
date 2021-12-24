@@ -1,6 +1,6 @@
 <?php
 
-namespace Potter\DBAL\MySQLi;
+namespace Potter\DBAL\MySQLi\Connection;
 
 use \MySQLi;
 

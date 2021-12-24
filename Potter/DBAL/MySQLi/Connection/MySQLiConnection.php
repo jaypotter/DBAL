@@ -1,10 +1,11 @@
 <?php
 
-namespace Potter\DBAL\MySQLi;
+namespace Potter\DBAL\MySQLi\Connection;
 
 use \MySQLi;
 use Potter\DBAL\{
     MySQL\Connection\MySQLConnectionInterface,
+    MySQLi\MySQLiStatement,
     Server\Remote\AbstractRemoteDatabaseServer,
     Statement\StatementInterface
 };

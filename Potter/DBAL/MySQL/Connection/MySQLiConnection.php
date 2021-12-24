@@ -12,14 +12,23 @@ final class MySQLiConnection extends AbstractRemoteDatabaseServer implements MyS
 
     private const PREFIX = 'mysqli';
 
+    private MySQLi $handle;
+
+    public function __construct(string $user, string $password, string $server = 'localhost', int $port = MySQLConnectionInterface::DEFAULT_PORT)
+    {
+        $this->setUser($user);
+        $this->setPass($password);
+        $this->setHost($server);
+        $this->setPort($port);
+        $this->connect();   
+    }
+
     public function connect(): void
     {
-        $this->setHandle(
-            new MySQLi(
-                hostname: $this->getHost(),
-                username: $this->getUser(),
-                password: $this->getPass()
-            )
+        $this->handle = new MySQLi(
+            hostname: $this->getHost(),
+            username: $this->getUser(),
+            password: $this->getPass()
         );
     }
 

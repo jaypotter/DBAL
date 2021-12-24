@@ -2,9 +2,14 @@
 
 namespace Potter\DBAL\Server\Remote;
 
-use Potter\DBAL\Server\AbstractDatabaseServer;
+use Potter\Connection\Remote\AbstractRemoteConnection;
 
-abstract class AbstractRemoteDatabaseServer extends AbstractDatabaseServer implements RemoteDatabaseServerInterface
+abstract class AbstractRemoteDatabaseServer extends AbstractRemoteConnection implements RemoteDatabaseServerInterface
 {
+    private const PREFIX = 'db_remote';
 
+    public function getPrefix(): string
+    {
+        return self::PREFIX;
+    }
 }

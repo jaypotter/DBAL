@@ -1,11 +1,11 @@
 <?php
 
-namespace Potter\DBAL\MySQL;
+namespace Potter\DBAL\MySQLi;
 
 use \mysqli_stmt;
 
 use Potter\DBAL\{
-    MySQL\Connection\MySQLiConnection,
+    MySQLi\Connection\MySQLiConnection,
     Statement\AbstractStatement
 };
 

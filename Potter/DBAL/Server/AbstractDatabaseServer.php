@@ -12,7 +12,7 @@ abstract class AbstractDatabaseServer extends AbstractConnection implements Data
 {
     private const PREFIX = 'db';
 
-    //abstract public function getDatabase(string $database): DatabaseInterface;
+    abstract public function getDatabase(string $database): DatabaseInterface;
 
     abstract public function getDatabases(): array;
 

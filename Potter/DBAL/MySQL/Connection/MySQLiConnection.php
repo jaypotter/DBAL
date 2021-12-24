@@ -8,11 +8,9 @@ use Potter\DBAL\Server\Remote\AbstractRemoteDatabaseServer;
 
 final class MySQLiConnection extends AbstractRemoteDatabaseServer implements MySQLConnectionInterface
 {
-    use MySQLConnectionTrait;
+    use MySQLConnectionTrait, MySQLiHandleTrait;
 
     private const PREFIX = 'mysqli';
-
-    private MySQLi $handle;
 
     public function __construct(string $user, string $password, string $server = 'localhost', int $port = MySQLConnectionInterface::DEFAULT_PORT)
     {
@@ -25,11 +23,13 @@ final class MySQLiConnection extends AbstractRemoteDatabaseServer implements MyS
 
     public function connect(): void
     {
-        $this->handle = new MySQLi(
-            hostname: $this->getHost(),
-            username: $this->getUser(),
-            password: $this->getPass(),
-            port: $this->getPort()
+        $this->setHandle(
+            new MySQLi(
+                hostname: $this->getHost(),
+                username: $this->getUser(),
+                password: $this->getPass(),
+                port: $this->getPort()
+            )
         );
     }
 

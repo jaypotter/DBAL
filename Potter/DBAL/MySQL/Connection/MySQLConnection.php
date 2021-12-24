@@ -8,6 +8,8 @@ final class MySQLConnection extends AbstractRemotePDOConnection implements MySQL
 {
     use MySQLConnectionTrait;
 
+    private const PREFIX = 'mysqli';
+
     final public function __construct(string $user, string $password, string $server = 'localhost', int $port = MySQLConnectionInterface::DEFAULT_PORT)
     {
         $this->setUser($user);
@@ -15,5 +17,10 @@ final class MySQLConnection extends AbstractRemotePDOConnection implements MySQL
         $this->setHost($server);
         $this->setDsn('mysql:host=' . $server);
         $this->connect();   
+    }
+
+    public function getPrefix(): string
+    {
+        return self::PREFIX;
     }
 }

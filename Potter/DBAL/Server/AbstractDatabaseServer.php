@@ -14,6 +14,8 @@ abstract class AbstractDatabaseServer extends AbstractConnection implements Data
 
     //abstract public function getDatabase(string $database): DatabaseInterface;
 
+    abstract public function getDatabases(): array;
+
     public function getPrefix(): string
     {
         return self::PREFIX;

@@ -8,6 +8,11 @@ trait MySQLiShowTrait
 {
     abstract public function prepare(string $statement): StatementInterface;
 
+    final public function getDatabases(): array
+    {
+        return $this->showDatabases();
+    }
+
     final public function showDatabases(string $like = ''): array
     {
         $query = "SHOW DATABASES";

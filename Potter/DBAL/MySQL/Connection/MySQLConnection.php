@@ -10,7 +10,7 @@ final class MySQLConnection extends AbstractRemotePDOConnection implements MySQL
 
     private const PREFIX = 'mysqli';
 
-    final public function __construct(string $user, string $password, string $server = 'localhost', int $port = MySQLConnectionInterface::DEFAULT_PORT)
+    public function __construct(string $user, string $password, string $server = 'localhost', int $port = MySQLConnectionInterface::DEFAULT_PORT)
     {
         $this->setUser($user);
         $this->setPass($password);

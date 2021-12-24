@@ -35,10 +35,14 @@ trait PDOConnectionTrait
         return $this->handle;
     }
 
+    abstract public function getPass(): string;
+
     public function getPrefix(): string
     {
         return 'pdo';
     }
+
+    abstract public function getUser(): string;
 
     final public function prepare(string $statement): StatementInterface
     {

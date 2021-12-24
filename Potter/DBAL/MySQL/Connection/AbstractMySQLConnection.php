@@ -9,6 +9,8 @@ use Potter\DBAL\{
 
 abstract class AbstractMySQLConnection extends AbstractRemotePDOConnection implements MySQLConnectionInterface
 {
+    use MySQLConnectionTrait;
+    
     private const PREFIX = 'mysql';
 
     public function getPrefix(): string

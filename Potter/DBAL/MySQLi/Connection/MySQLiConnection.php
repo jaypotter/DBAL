@@ -3,8 +3,11 @@
 namespace Potter\DBAL\MySQLi\Connection;
 
 use \MySQLi;
+use Potter\DBAL\MySQL\Connection\{
+    MySQLConnectionInterface,
+    MySQLConnectionTrait
+};
 use Potter\DBAL\{
-    MySQL\Connection\MySQLConnectionInterface,
     MySQLi\MySQLiStatement,
     Server\Remote\AbstractRemoteDatabaseServer,
     Statement\StatementInterface

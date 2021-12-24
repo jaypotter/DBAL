@@ -17,4 +17,9 @@ final class PDOStatement extends AbstractStatement
     {
         $this->statement = $connection->getHandle()->prepare($statement);
     }
+
+    public function execute(): void
+    {
+        $this->statement->execute();
+    }
 }

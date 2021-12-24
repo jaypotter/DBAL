@@ -1,16 +1,15 @@
 <?php
 
-namespace Potter\DBAL\MySQL\Connection;
+namespace Potter\DBAL\MySQLi;
 
 use \MySQLi;
-
 use Potter\DBAL\{
-    MySQL\MySQLiStatement,
+    MySQL\Connection\MySQLConnectionInterface,
     Server\Remote\AbstractRemoteDatabaseServer,
     Statement\StatementInterface
 };
 
-final class MySQLiConnection extends AbstractRemoteDatabaseServer implements MySQLConnectionInterface
+final class MySQLiConnection extends AbstractRemoteDatabaseServer implements MySQLiConnectionInterface
 {
     use MySQLiHandleTrait, MySQLiShowTrait;
 

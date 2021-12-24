@@ -1,13 +1,10 @@
 <?php
 
-namespace Potter\DBAL\MySQL;
+namespace Potter\DBAL\MySQLi;
 
 use \mysqli_stmt;
 
-use Potter\DBAL\{
-    MySQL\Connection\MySQLiConnection,
-    Statement\AbstractStatement
-};
+use Potter\DBAL\Statement\AbstractStatement;
 
 final class MySQLiStatement extends AbstractStatement
 {

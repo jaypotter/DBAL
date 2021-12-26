@@ -14,7 +14,7 @@
         "psr-4": {"Potter\\": "Potter/"}
     },
     "require": {
-        "php": "^8.0",
+        "php": ">=8.0",
         "potter/connection": ">=0.0.4",
         "potter/throwable": ">=0.0.3"
     }

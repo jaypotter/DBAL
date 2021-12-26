@@ -33,9 +33,14 @@ abstract class AbstractMySQLiConnection extends AbstractRemoteDatabaseServer imp
         return self::PREFIX;
     }
 
-    final public function prepare(string $statement): StatementInterface
+    final public function prepare(string $statement, bool $immediate = false): StatementInterface
     {
-        return new MySQLiStatement($this, $statement);
+        $statement = new MySQLiStatement($this, $statement);
+        if (!$immediate) {
+            return $statement;
+        }
+        $statement->execute();
+        return $statement;
     }
 
     abstract public function setHandle(MySQLi $handle): void;

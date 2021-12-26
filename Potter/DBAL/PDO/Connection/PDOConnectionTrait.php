@@ -44,9 +44,14 @@ trait PDOConnectionTrait
 
     abstract public function getUser(): string;
 
-    final public function prepare(string $statement): StatementInterface
+    final public function prepare(string $statement, bool $immediate = false): StatementInterface
     {
-        return new PDOStatement(/** @scrutinizer ignore-type */ $this, $statement);
+        $statement = new PDOStatement($this, $statement);
+        if (!$immediate) {
+            return $statement;
+        }
+        $statement->execute();
+        return $statement;
     }
 
     final public function send(string $bytes): mixed

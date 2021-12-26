@@ -9,7 +9,7 @@ use Potter\DBAL\{
 
 trait MySQLiShowTrait
 {
-    abstract public function prepare(string $statement): StatementInterface;
+    abstract public function prepare(string $statement, bool $immediate = false): StatementInterface;
 
     final public function showDatabases(string $like = ''): array
     {

@@ -9,14 +9,31 @@ use Potter\DBAL\{
 
 abstract class AbstractMySQLConnection extends AbstractRemotePDOConnection implements MySQLConnectionInterface
 {
-    use MySQLConnectionTrait;
+    
     
     private const PREFIX = 'mysql';
 
-    public function getPrefix(): string
+    abstract public function getDatabases(): array;
+
+    final public function getPrefix(): string
     {
         return self::PREFIX;
     }
 
-    abstract public function showDatabases(string $like = ''): array;
+    final public function showDatabases(string $like = ''): array
+    {
+        $query = "SHOW DATABASES";
+        if (strlen($like) === 0) {
+            $statement = $this->prepare($query);
+            $statement->execute();
+            return $statement->fetch();
+        }
+        $query .= " LIKE ?";
+        $statement = $this->prepare($query);
+        $statement->bindParam(1, StatementInterface::PARAM_STR, $like);
+        $statement->execute();
+        return $statement->fetch();
+    }
+
+    abstract public function use(string $database): void;
 }

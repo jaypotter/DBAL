@@ -6,6 +6,8 @@ use Potter\DBAL\Statement\StatementInterface;
 
 final class MySQLConnection extends AbstractMySQLConnection implements MySQLConnectionInterface
 {
+    use MySQLConnectionTrait;
+    
     public function __construct(string $user, string $password, string $server = 'localhost', int $port = MySQLConnectionInterface::DEFAULT_PORT)
     {
         $this->setUser($user);
@@ -14,20 +16,5 @@ final class MySQLConnection extends AbstractMySQLConnection implements MySQLConn
         $this->setPort($port);
         $this->setDsn("mysql:host=$server;port=$port");
         $this->connect();   
-    }
-
-    public function showDatabases(string $like = ''): array
-    {
-        $query = "SHOW DATABASES";
-        if (strlen($like) === 0) {
-            $statement = $this->prepare($query);
-            $statement->execute();
-            return $statement->fetch();
-        }
-        $query .= " LIKE ?";
-        $statement = $this->prepare($query);
-        $statement->bindParam(1, StatementInterface::PARAM_STR, $like);
-        $statement->execute();
-        return $statement->fetch();
     }
 }

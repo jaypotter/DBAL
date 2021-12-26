@@ -2,9 +2,11 @@
 
 namespace Potter\DBAL\Database;
 
+use Potter\DBAL\Server\ServerInterface;
+
 interface DatabaseInterface
 {
     public function getName(): string;
 
-    public function query(string $query): array;
+    public function getServer(): ServerInterface;
 }

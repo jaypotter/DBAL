@@ -6,8 +6,8 @@ use Potter\DBAL\Statement\StatementInterface;
 
 final class MySQLConnection extends AbstractMySQLConnection implements MySQLConnectionInterface
 {
-    use MySQLConnectionTrait;
-    
+    use MySQLConnectionTrait, MySQLPDOConnectionTrait;
+
     public function __construct(string $user, string $password, string $server = 'localhost', int $port = MySQLConnectionInterface::DEFAULT_PORT)
     {
         $this->setUser($user);

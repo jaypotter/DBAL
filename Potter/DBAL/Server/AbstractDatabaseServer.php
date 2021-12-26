@@ -12,7 +12,7 @@ abstract class AbstractDatabaseServer extends AbstractConnection implements Data
 {
     private const PREFIX = 'db';
 
-    abstract public function getDatabase(string $database): DatabaseInterface;
+    //abstract public function getDatabase(string $database): DatabaseInterface;
 
     abstract public function getDatabases(): array;
 
@@ -21,5 +21,5 @@ abstract class AbstractDatabaseServer extends AbstractConnection implements Data
         return self::PREFIX;
     }
 
-    abstract public function prepare(string $statement): StatementInterface;
+    abstract public function prepare(string $statement, bool $immediate = false): StatementInterface;
 }

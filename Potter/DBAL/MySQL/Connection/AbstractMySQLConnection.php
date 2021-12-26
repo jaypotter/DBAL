@@ -18,18 +18,7 @@ abstract class AbstractMySQLConnection extends AbstractRemotePDOConnection imple
         return self::PREFIX;
     }
 
-    final public function showDatabases(string $like = ''): array
-    {
-        $query = "SHOW DATABASES";
-        if (strlen($like) === 0) {
-            $statement = $this->prepare($query);
-            $statement->execute();
-            return $statement->fetch();
-        }
-        $query .= " LIKE ?";
-        $statement = $this->prepare($query);
-        $statement->bindParam(1, StatementInterface::PARAM_STR, $like);
-        $statement->execute();
-        return $statement->fetch();
-    }
+    abstract public function showDatabases(string $like = ''): array;
+
+    abstract public function showGrantsForCurrentUser(): array;
 }

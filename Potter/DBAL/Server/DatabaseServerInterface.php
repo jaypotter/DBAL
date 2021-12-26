@@ -10,9 +10,9 @@ use Potter\DBAL\{
 
 interface DatabaseServerInterface extends ConnectionInterface
 {
-    public function getDatabase(string $database): DatabaseInterface;
+    //public function getDatabase(string $database): DatabaseInterface;
 
     public function getDatabases(): array;
 
-    public function prepare(string $statement): StatementInterface;
+    public function prepare(string $statement, bool $immediate = false): StatementInterface;
 }

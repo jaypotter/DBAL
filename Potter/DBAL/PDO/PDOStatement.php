@@ -34,7 +34,7 @@ final class PDOStatement extends AbstractStatement
 
     public function fetch(): array
     {
-        return $this->statement->fetchAll();
+        return $this->statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     private function matchParamType(int $constant): int

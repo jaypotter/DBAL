@@ -1,6 +1,6 @@
 {
     "name": "potter/dbal",
-    "description": "PHP 8 Database Abstraction Layer",
+    "description": "Open Source PHP 8 Database Abstraction Layer",
     "minimum-stability": "dev",
     "license": "MIT",
     "type": "library",

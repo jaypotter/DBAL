@@ -2,7 +2,10 @@
 
 namespace Potter\DBAL\MySQLi\Connection;
 
-use Potter\DBAL\Statement\StatementInterface;
+use Potter\DBAL\{
+    MySQLi\MySQLiInjectionFlag,
+    Statement\StatementInterface
+};
 
 trait MySQLiShowTrait
 {
@@ -27,7 +30,7 @@ trait MySQLiShowTrait
     {
         foreach ([' ', '"', "'", ";"] as $char) {
             if (strpos($like, $char) !== false) {
-                throw new \Exception;
+                throw new MySQLiInjectionFlag;
             }
         }
     }

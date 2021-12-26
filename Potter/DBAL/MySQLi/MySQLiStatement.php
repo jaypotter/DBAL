@@ -47,7 +47,7 @@ final class MySQLiStatement extends AbstractStatement
 
     public function fetch(): array
     {
-        return $this->statement->get_result()->fetch_all();
+        return $this->statement->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
     private function getParamTypes(): string

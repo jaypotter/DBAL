@@ -8,9 +8,7 @@ use Potter\DBAL\{
 };
 
 abstract class AbstractMySQLConnection extends AbstractRemotePDOConnection implements MySQLConnectionInterface
-{
-    
-    
+{  
     private const PREFIX = 'mysql';
 
     abstract public function getDatabases(): array;
@@ -34,6 +32,4 @@ abstract class AbstractMySQLConnection extends AbstractRemotePDOConnection imple
         $statement->execute();
         return $statement->fetch();
     }
-
-    abstract public function use(string $database): void;
 }

@@ -9,4 +9,7 @@ interface MySQLConnectionInterface extends RemoteDatabaseServerInterface
     public const DEFAULT_PORT = 3306;
 
     public function showDatabases(string $like = ''): array;
+
+    public function use(string $database): void;
 }
+

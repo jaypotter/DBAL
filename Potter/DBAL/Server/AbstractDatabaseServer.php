@@ -14,10 +14,12 @@ abstract class AbstractDatabaseServer extends AbstractConnection implements Data
 
     //abstract public function getDatabase(string $database): DatabaseInterface;
 
+    abstract public function getDatabases(): array;
+
     public function getPrefix(): string
     {
         return self::PREFIX;
     }
 
-    abstract public function prepare(string $statement): StatementInterface;
+    abstract public function prepare(string $statement, bool $immediate = false): StatementInterface;
 }

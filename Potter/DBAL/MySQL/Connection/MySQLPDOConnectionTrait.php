@@ -4,9 +4,9 @@ namespace Potter\DBAL\MySQL\Connection;
 
 use Potter\DBAL\Statement\StatementInterface;
 
-trait MySQLiShowTrait
+trait MySQLPDOConnectionTrait
 {
-    abstract public function prepare(string $statement): StatementInterface;
+    abstract public function prepare(string $statement, bool $immediate = false): StatementInterface;
 
     final public function showDatabases(string $like = ''): array
     {
@@ -16,19 +16,10 @@ trait MySQLiShowTrait
             $statement->execute();
             return $statement->fetch();
         }
-        $this->validateShowDatabasesLike($like);
-        $query .= " LIKE '$like'";
+        $query .= " LIKE ?";
         $statement = $this->prepare($query);
+        $statement->bindParam(1, StatementInterface::PARAM_STR, $like);
         $statement->execute();
         return $statement->fetch();
-    }
-
-    private function validateShowDatabasesLike(string $like): void
-    {
-        foreach ([' ', '"', "'", ";"] as $char) {
-            if (strpos($like, $char) !== false) {
-                throw new \Exception;
-            }
-        }
     }
 }

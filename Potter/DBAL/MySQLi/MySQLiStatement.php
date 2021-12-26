@@ -1,11 +1,11 @@
 <?php
 
-namespace Potter\DBAL\MySQL;
+namespace Potter\DBAL\MySQLi;
 
 use \mysqli_stmt;
 
 use Potter\DBAL\{
-    MySQL\Connection\MySQLiConnection,
+    MySQLi\Connection\MySQLiConnection,
     Statement\AbstractStatement
 };
 
@@ -47,7 +47,7 @@ final class MySQLiStatement extends AbstractStatement
 
     public function fetch(): array
     {
-        return $this->statement->get_result()->fetch_all();
+        return $this->statement->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
     private function getParamTypes(): string

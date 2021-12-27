@@ -2,10 +2,7 @@
 
 namespace Potter\DBAL\MySQL\Connection;
 
-use Potter\DBAL\{
-    MySQL\Database\MySQLDatabase,
-    Statement\StatementInterface
-};
+use Potter\DBAL\Statement\StatementInterface;
 
 trait MySQLConnectionTrait
 {

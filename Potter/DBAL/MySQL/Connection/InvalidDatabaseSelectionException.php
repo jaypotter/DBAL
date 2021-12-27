@@ -1,6 +1,6 @@
 <?php
 
-namespace Potter\DBAL\MySQLi;
+namespace Potter\DBAL\MySQL\Connection;
 
 use Potter\{
     DBAL\Throwable\DBALThrowableInterface,

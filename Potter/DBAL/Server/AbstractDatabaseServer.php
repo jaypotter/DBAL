@@ -14,7 +14,7 @@ abstract class AbstractDatabaseServer extends AbstractConnection implements Data
 
     abstract public function databaseExists(string $database): bool;
 
-    //abstract public function getDatabase(string $database): DatabaseInterface;
+    abstract public function getDatabase(string $database): DatabaseInterface;
 
     abstract public function getDatabases(bool $refresh = false): array;
 

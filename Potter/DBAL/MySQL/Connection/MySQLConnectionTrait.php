@@ -2,7 +2,11 @@
 
 namespace Potter\DBAL\MySQL\Connection;
 
-use Potter\DBAL\Statement\StatementInterface;
+use Potter\DBAL\{
+    Database\DatabaseInterface,
+    MySQL\Database\MySQLDatabase,
+    Statement\StatementInterface
+};
 
 trait MySQLConnectionTrait
 {
@@ -11,6 +15,14 @@ trait MySQLConnectionTrait
     final public function databaseExists(string $database): bool
     {
         return in_array($database, $this->getDatabases());
+    }
+
+    final public function getDatabase(string $database): DatabaseInterface
+    {
+        if (!$this->databaseExists($database)) {
+            throw new InvalidDatabaseSelectionException;
+        }
+        return new MySQLDatabase($this, $database);
     }
 
     final public function getDatabases(bool $refresh = false): array

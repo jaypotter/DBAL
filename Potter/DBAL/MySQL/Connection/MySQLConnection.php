@@ -4,7 +4,8 @@ namespace Potter\DBAL\MySQL\Connection;
 
 use Potter\DBAL\{
     Database\DatabaseInterface,
-    MySQL\MySQLDatabase,
+    MySQL\Database\MySQLDatabase,
+    Server\InvalidDatabaseSelectionException,
     Statement\StatementInterface
 };
 

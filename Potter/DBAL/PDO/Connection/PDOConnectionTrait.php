@@ -46,7 +46,7 @@ trait PDOConnectionTrait
 
     final protected function _prepare(PDOConnectionInterface $obj, string $statement, bool $immediate = false): StatementInterface
     {
-        $statement = new PDOStatement($this, $statement);
+        $statement = new PDOStatement($obj, $statement);
         if (!$immediate) {
             return $statement;
         }

@@ -2,16 +2,45 @@
 
 namespace Potter\DBAL\MySQL\Connection;
 
-use Potter\DBAL\Statement\StatementInterface;
+use Potter\DBAL\{
+    Database\DatabaseInterface,
+    MySQL\Database\MySQLDatabase,
+    Statement\StatementInterface
+};
 
 trait MySQLConnectionTrait
 {
-    final public function getDatabases(): array
+    private array $databases;
+
+    final public function databaseExists(string $database): bool
     {
-        return $this->showDatabases();
+        return in_array($database, $this->getDatabases());
+    }
+
+    final public function getDatabase(string $database): DatabaseInterface
+    {
+        if (!$this->databaseExists($database)) {
+            throw new InvalidDatabaseSelectionException;
+        }
+        return new MySQLDatabase($this, $database);
+    }
+
+    final public function getDatabases(bool $refresh = false): array
+    {
+        $refresh = $refresh || !isset($this->databases);
+        return $refresh ? $this->refreshDatabases() : $this->databases;
     }
 
     abstract public function prepare(string $statement, bool $immediate = false): StatementInterface;
+
+    private function refreshDatabases(): array
+    {
+        $databases = [];
+        foreach($this->showDatabases() as $database) {
+            array_push($databases, array_values($database)[0]);
+        }
+        return $this->databases =  $databases;
+    }
 
     abstract public function showDatabases(string $like = ''): array;
 

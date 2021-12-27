@@ -16,6 +16,6 @@
     "require": {
         "php": ">=8.0",
         "potter/connection": ">=0.0.4",
-        "potter/throwable": ">=0.0.3"
+        "potter/throwable": "dev-main"
     }
 }

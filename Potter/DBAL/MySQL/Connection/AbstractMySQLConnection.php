@@ -11,8 +11,6 @@ abstract class AbstractMySQLConnection extends AbstractRemotePDOConnection imple
 {  
     private const PREFIX = 'mysql';
 
-    abstract public function getDatabases(): array;
-
     final public function getPrefix(): string
     {
         return self::PREFIX;

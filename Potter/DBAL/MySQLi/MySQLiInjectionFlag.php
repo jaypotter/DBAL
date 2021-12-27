@@ -2,9 +2,12 @@
 
 namespace Potter\DBAL\MySQLi;
 
-use Potter\Throwable\Flag\AbstractCodeInjectionFlag;
+use Potter\{
+    DBAL\Throwable\DBALThrowableInterface,
+    Throwable\Flag\AbstractCodeInjectionFlag
+};
 
-final class MySQLiInjectionFlag extends AbstractCodeInjectionFlag
+final class MySQLiInjectionFlag extends AbstractCodeInjectionFlag implements DBALThrowableInterface
 {
 
 }

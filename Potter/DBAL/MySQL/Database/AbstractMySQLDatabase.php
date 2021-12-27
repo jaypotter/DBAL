@@ -2,9 +2,9 @@
 
 namespace Potter\DBAL\MySQL\Database;
 
-use Potter\DBAL\PDO\Database\AbstractPDO;
+use Potter\DBAL\Database\AbstractDatabase;
 
-abstract class AbstractMySQLDatabase extends AbstractPDO implements MySQLDatabaseInterface
+abstract class AbstractMySQLDatabase extends AbstractDatabase implements MySQLDatabaseInterface
 {
     
 }

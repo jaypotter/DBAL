@@ -4,7 +4,7 @@ namespace Potter\DBAL\MySQL\Database;
 
 use Potter\DBAL\{
     MySQL\Connection\MySQLConnectionInterface,
-    Server\ServerInterface
+    Server\DatabaseServerInterface
 };
 
 final class MySQLDatabase extends AbstractMySQLDatabase
@@ -19,7 +19,7 @@ final class MySQLDatabase extends AbstractMySQLDatabase
         return $this->database;
     }
 
-    final public function getServer(): ServerInterface
+    final public function getServer(): DatabaseServerInterface
     {
         return $this->connection;
     }

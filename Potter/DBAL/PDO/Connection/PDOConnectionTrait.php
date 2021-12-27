@@ -44,7 +44,7 @@ trait PDOConnectionTrait
 
     abstract public function getUser(): string;
 
-    final public function prepare(string $statement, bool $immediate = false): StatementInterface
+    final protected function _prepare(PDOConnectionInterface $obj, string $statement, bool $immediate = false): StatementInterface
     {
         $statement = new PDOStatement($this, $statement);
         if (!$immediate) {

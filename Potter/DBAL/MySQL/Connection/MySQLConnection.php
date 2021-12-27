@@ -17,4 +17,12 @@ final class MySQLConnection extends AbstractMySQLConnection implements MySQLConn
         $this->setDsn("mysql:host=$server;port=$port");
         $this->connect();   
     }
+
+    public function getDatabase(string $database): DatabaseInterface
+    {
+        if (!$this->databaseExists($database)) {
+            throw new InvalidDatabaseSelectionException;
+        }
+        return new MySQLDatabase($this, $database);
+    }
 }

@@ -2,7 +2,11 @@
 
 namespace Potter\DBAL\MySQL\Connection;
 
-use Potter\DBAL\Statement\StatementInterface;
+use Potter\DBAL\{
+    Database\DatabaseInterface,
+    MySQL\MySQLDatabase,
+    Statement\StatementInterface
+};
 
 final class MySQLConnection extends AbstractMySQLConnection implements MySQLConnectionInterface
 {

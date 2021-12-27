@@ -17,14 +17,6 @@ trait MySQLConnectionTrait
         return in_array($database, $this->getDatabases());
     }
 
-    final public function getDatabase(string $database): DatabaseInterface
-    {
-        if (!$this->databaseExists($database)) {
-            throw new InvalidDatabaseSelectionException;
-        }
-        return new MySQLDatabase($this, $database);
-    }
-
     final public function getDatabases(bool $refresh = false): array
     {
         $refresh = $refresh || !isset($this->databases);

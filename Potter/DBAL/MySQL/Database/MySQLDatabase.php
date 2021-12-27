@@ -2,7 +2,10 @@
 
 namespace Potter\DBAL\MySQL\Database;
 
-use Potter\DBAL\MySQL\Connection\MySQLConnectionInterface;
+use Potter\DBAL\{
+    MySQL\Connection\MySQLConnectionInterface,
+    Server\ServerInterface
+};
 
 final class MySQLDatabase extends AbstractMySQLDatabase
 {

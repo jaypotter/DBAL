@@ -6,10 +6,18 @@ use Potter\DBAL\MySQL\Connection\MySQLConnectionInterface;
 
 final class MySQLDatabase extends AbstractMySQLDatabase
 {
-    use MySQLDatabaseTrait;
-
     public function __construct(private MySQLConnectionInterface $connection, private string $database)
     {
 
+    }
+
+    final public function getName(): string
+    {
+        return $this->database;
+    }
+
+    final public function getServer(): ServerInterface
+    {
+        return $this->connection;
     }
 }

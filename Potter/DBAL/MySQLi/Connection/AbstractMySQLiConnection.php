@@ -4,10 +4,17 @@ namespace Potter\DBAL\MySQLi\Connection;
 
 use \MySQLi;
 use Potter\DBAL\{
-    MySQL\Connection\MySQLConnectionInterface,
+    Database\DatabaseInterface,
     MySQLi\MySQLiStatement,
-    Server\Remote\AbstractRemoteDatabaseServer,
     Statement\StatementInterface
+};
+use Potter\DBAL\MySQL\{
+    Connection\MySQLConnectionInterface,
+    Database\MySQLDatabase
+};
+use Potter\DBAL\Server\{
+    Remote\AbstractRemoteDatabaseServer,
+    InvalidDatabaseSelectionException
 };
 
 abstract class AbstractMySQLiConnection extends AbstractRemoteDatabaseServer implements MySQLiConnectionInterface
@@ -24,6 +31,14 @@ abstract class AbstractMySQLiConnection extends AbstractRemoteDatabaseServer imp
                 port: $this->getPort()
             )
         );
+    }
+
+    final public function getDatabase(string $database): DatabaseInterface
+    {
+        if (!$this->databaseExists($database)) {
+            throw new InvalidDatabaseSelectionException;
+        }
+        return new MySQLDatabase($this, $database);
     }
 
     abstract public function getHandle(): MySQLi;
